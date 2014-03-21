@@ -1,0 +1,136 @@
+CONSTRUCTORES: Su función es crear objetos e INICIALIZAR SUS ATRIBUTOS O CAMPOS.
+
+1.Si una clase no tiene constructor declarado (escrito) al crear un objeto se usara el constructor por defecto, el cual NO TIENE ARGUMENTOS, 
+Su función de este constructor es inicializar los atributos a su valor por defecto
+
+*1*---public class Test{ int x;}                  public class Main{ public static void main(string org[]){Test algo=new test();
+                                                  System.out.println(algo.x);}}
+
+// PRIMITIVO lo inicializa en cero por defecto
+
+*1*---public class Test{ String x;}                public class main{ public static void main(string org[]){ Test algo=new Test();
+                                                   System.out.println(algo.x);}}
+ 
+// REFERENCIADOS lo que inicializa en null por defecto.
+-------------------------------------------------------
+*2*---public class test{ public test(){} }
+
+//El programa compila y se ejecuta ya que lo unico que hicimos fue poner el constructor por defecto
+-------------------------------------------------------
+*3*--- public class Test{ Test(); }
+
+//Marcara UN error ya que este constructor solo se usa cuando mandamos a llamar al constructor y le asignamos un nuevo objeto
+-------------------------------------------------------
+*4*---public class Test{ public void Test(){} }
+
+//Compilara y se ejecutara bien ya que cuando utilizemos un constructor no lleva tipo de retorno ya que dicho constructor se convertira en un metodo
+--------------------------------------------------------
+*5*---public class Test{ public Test(){ int y=5; System.out.println(y); }}
+
+//No marcara error por que el constructor permite inicializar los atributos aunque en este caso declaramos una variable local
+--------------------------------------------------------
+*6*---
+public class Test{ public Test(){ int y; System.out.println(y);}}
+
+//Marcara error en la linea de System ya que no inicializamos la variable y y esta dentro del constructor
+---------------------------------------------------------
+*7*---
+public class Test{ int y; public Test(){ System.out.println(y);}}
+
+//No marcara error ya que estamos declarando la variable afuera del constructor, asi que no es una variable local y dentro del constructor lo inicializa 
+--------------------------------------------------------
+*8*---public class Test{ int x; }                         public class main{ int x; public static void main(string w[]){ Test s=new Test();
+                                                           System.out.printl(x); }}
+
+//marcara error ya que no utilizamos la variable de la clase y despues utilizamos una variable local que no tiene valor y no se inicializa por defecto
+---------------------------------------------------------
+*9*---public class Test{ int x; }                         public class main{ public static void main(string w[]){ int x; Test s=new Test();
+                                                             System.out.printl(x); }}
+
+//Tendra error por el static ya que si compila pero no se ejecuta
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Ejercicio 1. Tenemos la clase */
+
+public class Hola{
+	public Hola(){ }
+	public Hola(int x){}
+	public Hola(float y){}
+
+}
+
+
+/* Se tiene la siguiente clase */
+public class Prueba{
+     public static void min(String args[]){
+	/* correcta */
+	Hola x=new Hola();
+	}
+}
+
+----------------------------------------
+/* Ejercicio 2. Tenemos las clase siguientes Existe algun error?  */
+
+public class Hola{
+	public Hola(int x){ }//NOTA: Solo combinaciones distintas
+	public Hola(float y){}
+	public Hola(int x, float y){}
+	public Hola(int y, float x){}-----/*Este esta mal, por que se sta repitiendo la misma estructura de dato aunque con diferente nombre*/
+	public Hola(float x,int y){}
+	public Hola(int x, float y float z){}
+}
+
+/* Respuesta del por qué 
+
+public class Prueba 
+     public static void main(String rgs[]){
+	
+	Hola ob1=new Hola();//incorrecto por que no hay constructor por default
+	Hola ob2=new Hola(-7);//correcto por que tiene contructor entero
+	Hola ob3=new Hola(5,4f);//correcto
+	Hola ob4=new Hola(4,5f,5);//correcto
+	Hola ob5=new Hola(5,4,6f);//incorrecto por duplicidad de constructores
+}
+
+----------------------------------------------
+/* Ejercicio 3. Tenemos la clase Cuales rnglones marcan error?  */
+
+public class Prueba{
+      public static void main(String args[]){
+	byte x=2;
+	short y=2;
+	int z=2,
+	long w=2,
+	
+z=x;  //z mayor a x; Correcto                       //A los que tienen la palabra correcto les estan quitando el tipo de dato original y los estan 
+w=x; //w mayor a x; Correcto                         pasando a uno mas grande. A esto en lenguaje tecnico se llama CASTING EXPLÍCITO(promoción)
+	y=z;//y menor a z
+	z=w;//z menor a w                                  //Los que estan incorrectos se pueden corregir
+	x=w;//x menor a w
+y=x; //y mayor a x; Correcto
+w=y; //w mayor a y; Correcto
+	x=z;//x menor a z
+
+}
+---------------------------------------------
+/* Ejercicio 4. Corregir con CASTING FORZADO los que estuvieron mal del jercicio anterior */
+
+public class Prueba{
+      public static void main(String args[]){
+
+	byte x=2;
+	short y=2;
+	int z=2,
+	long w=2,
+	
+	z=x;                               //Para que esten correctos siempre hay que ponerle la integral a la que pertenece                     
+	w=x;                                 por ejemplo: y=(short)z --short pertenece a la variable y                  
+	y=(short)z;
+	z=(int)w;                              
+	x=(byte)w;
+	y=x;                                
+	w=y;                              
+	x=(byte)z;
