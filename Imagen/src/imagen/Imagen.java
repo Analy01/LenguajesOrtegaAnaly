@@ -10,10 +10,22 @@ package imagen;
  */
 public class Imagen {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private int alto;
+    private int ancho;
+    
+public int getAlto(){
+    return alto;
+}
+public void setAlto(int alto){
+    if(alto<0)alto=-alto;
+    this.alto=alto;
+    }
+
+public int getAncho(){
+    return ancho;
+}
+public void setAncho(int ancho){
+    if(ancho<0)ancho=-ancho;
+    this.ancho=ancho;
     }
 }

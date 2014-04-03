@@ -11,12 +11,14 @@ package imagen;
  */
 public class TestImagen {
     public static void main(String[] args) {
-        Imagen photo=new Imagen();
+        Imagen tipo1 =new Imagen();
         
-        photo.getAlto();
-        photo.getAncho();
-        photo.setAlto(-35);
-        photo.setAncho(-20);  
-         
-    }
+        
+    tipo1.setAlto(-20);
+    System.out.println("El alto de la Imagen1 es: " + tipo1.getAlto());
+    tipo1.setAncho(-16);
+    System.out.println("El ancho de la Imagen1 es: " + tipo1.getAncho());
+    
+   }
+    
 }
